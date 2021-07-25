@@ -34,8 +34,8 @@ def get_rating():
     
 
 root = Tk()
-root.title('')
-root.iconbitmap('')
+root.title('VA Disability rating calculator')
+root.iconbitmap('images/WillRagB.ico')
 root.geometry('800x600')
 # Incase the link breaks, I have attached a file in webpage, that the same 2 tables exist
 # with open('webpage/table.html', 'r') as html_file:    # Then send html_file to dfTable.table
