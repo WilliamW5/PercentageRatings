@@ -1,10 +1,15 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from numpy.core.fromnumeric import resize
 import pandas as pd
 from pandas import DataFrame
 import numpy as np
 from tkinter import ttk, filedialog
+from pandastable import Table, TableModel
 import dfTable
+
+def get_rating():
+    return
 
 root = Tk()
 root.title('')
@@ -14,23 +19,16 @@ df = dfTable.table('https://www.benefits.va.gov/compensation/rates-index.asp')
 
 # Create Frame
 new_frame = Frame(root)
-new_frame.pack(pady=20)
+new_frame.pack(fill='both', expand=True)
 
-# Creates a treeview
-my_tree = ttk.Treeview(new_frame)
-my_tree["column"] = list(df.columns)
-my_tree["show"] = list(df.index)
+# Create a table from df
+table = Table(new_frame, dataframe=df, showstatusbar=True, showtoolbar=True)
+table.showIndex()
+table.show()
 
-for column in my_tree['column']:
-    my_tree.heading(column, text=column)
-
-for index in my_tree['show']:
-    my_tree.index(index, text=index)
-
-df_rows = df.to_numpy().tolist()
-for row in df_rows:
-    my_tree.inser("", "end", values=row)
-
-my_tree.pack()
+# 
+label = Label(root, text="Enter your ratings, seperated by a comma").pack()
+text_field = Entry(root, width=75, bg="#ffffff", fg="#000000", borderwidth=2).pack()
+button = Button(root, text="submit", command=get_rating()).pack()
 
 root.mainloop()
