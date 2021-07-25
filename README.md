@@ -8,8 +8,6 @@ Then, it saves the columns and index values, and pulls the remaining values into
 After, the program creates the GUI and puts the Dataframe on the tkiner pane using pandastable.
 Finally, you can input your ratings with a comma, and returns your new rating.
 
-requires:
-
 pip install:
 
 beautifulsoup4
