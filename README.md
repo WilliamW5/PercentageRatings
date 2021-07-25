@@ -9,9 +9,16 @@ After, the program creates the GUI and puts the Dataframe on the tkiner pane usi
 Finally, you can input your ratings with a comma, and returns your new rating.
 
 requires:
+
 pip install:
+
 beautifulsoup4
+
 requests
+
 pandas
+
 numpy
+
 pandastable
+
