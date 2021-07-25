@@ -9,11 +9,14 @@ from pandastable import Table, TableModel
 import dfTable
 
 def get_rating():
+    # Turns text_field into list
+    values = text_field.get().split(',')
+
     # Logic: get first split from textfield.
     # Go to index location, then column name
     # New x
     # Go to new index location, then column name
-    values = text_field.get().split(",")
+    print(df[values[0]][values[1]])
     print(values)
     return
 
@@ -21,6 +24,8 @@ root = Tk()
 root.title('')
 root.iconbitmap('')
 root.geometry('800x600')
+# Incase the link breaks, I have attached a file in webpage, that the same 2 tables exist
+# with open('webpage/table.html', 'r') as html_file: # Then send to dfTable, just the html_file
 df = dfTable.table('https://www.benefits.va.gov/compensation/rates-index.asp')
 
 # Create Frame
@@ -32,9 +37,12 @@ table = Table(new_frame, dataframe=df, showstatusbar=True, showtoolbar=True)
 table.showIndex()
 table.show()
 
-# 
-label = Label(root, text="Enter your ratings, seperated by a comma").pack()
-text_field = Entry(root, width=75, bg="#ffffff", fg="#000000", borderwidth=3).pack()
-button = Button(root, text="submit", command=get_rating).pack()
+# Creates the label, entry, and button
+label = Label(root, text="Enter your ratings, seperated by a comma")
+label.pack()
+text_field = Entry(root, width=75, bg="#ffffff", fg="#000000", borderwidth=3)
+text_field.pack()
+button = Button(root, text="submit", command=get_rating)
+button.pack()
 
 root.mainloop()
